@@ -6,6 +6,10 @@ const inputBtn = "123456789*0#";
 
 <template>
   <div class="w-48">
+    <div class="h-32 bg-sky-300">
+
+    </div>
+
     <div class="flex flex-wrap">
       <Button text="LT" #content>—</Button>
       <Button text="UP" #content>▲</Button>
