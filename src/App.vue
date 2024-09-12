@@ -1,9 +1,46 @@
 <script setup lang="ts">
 import Button from '@/components/Button.vue';
 import { useScreenStore } from './stores/screen';
+import { useRouter } from 'vue-router';
 
 const inputBtn = "123456789*0#";
 const store=useScreenStore();
+const router=useRouter();
+
+function goLeft(){
+  if (store.ltFnUrl)
+    router.push(store.ltFnUrl)
+}
+
+function goRight(){
+  if (store.rtFnUrl)
+    router.push(store.rtFnUrl)
+}
+
+function up(){
+  if (store.input.length==1&&Number.isSafeInteger(store.input)){
+    const vl=Number(store.input)
+    const nl=(vl+1).toString()
+
+    store.$patch({
+      input: nl,
+    })
+  }
+}
+
+function down(){
+  if (Number.isSafeInteger(store.input)){
+    const vl=Number(store.input)
+    if (vl==0)
+      return;
+
+    const nl=(vl-1).toString()
+    
+    store.$patch({
+      input: nl,
+    })
+  }
+}
 
 </script>
 
@@ -26,9 +63,9 @@ const store=useScreenStore();
 
     <div class="relative">
       <div class="flex flex-wrap">
-        <Button text="LT" #content>—</Button>
-        <Button text="UP" #content>▲</Button>
-        <Button text="RT" #content>—</Button>
+        <Button text="LT" @pointer-up="goLeft" #content>—</Button>
+        <Button text="UP" @pointer-up="down" #content>▲</Button>
+        <Button text="RT" @pointer-up="goRight" #content>—</Button>
 
         <Button text="LB">
           <template #content>
@@ -39,7 +76,7 @@ const store=useScreenStore();
             </svg>
           </template>
         </Button>
-        <Button text="DN" #content>▼</Button>
+        <Button text="DN" @pointer-up="up" #content>▼</Button>
         <Button text="RB">
           <template #content>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" class="size-5 mx-auto my-2 rotate-[135deg]">
