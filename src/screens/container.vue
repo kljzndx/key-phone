@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { useScreenStore } from '@/stores/screen';
-import { onMounted, watch } from "vue";
+import { onMounted } from "vue";
 
 const props = withDefaults(defineProps<{
     ltFnText: string,
     ltFnUrl: string,
     rtFnText: string,
     rtFnUrl: string,
-    input?: string,
+
     infomation?: string,
 }>(), {
-    input: '',
-    infomation: ''
+    infomation: '',
 });
 
 const store = useScreenStore();
@@ -22,7 +21,7 @@ onMounted(() => {
         ltFnUrl: props.ltFnUrl,
         rtFnText: props.rtFnText,
         rtFnUrl: props.rtFnUrl,
-        input: props.input,
+
         information: props.infomation,
     })
 })
