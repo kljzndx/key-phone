@@ -58,9 +58,8 @@ const store=useScreenStore();
         </li>
       </ul>
 
-      <div v-if="$route.path=='/'" class=" absolute left-0 top-0 w-full h-full bg-transparent" @pointerup="$router.push('/home')">
-        
-      </div>
+      <div v-if="$route.path=='/'" class="absolute left-0 top-0 w-full h-full bg-transparent"
+           @pointerup="$router.push('/home')"></div>
     </div>
   </div>
 </template>
