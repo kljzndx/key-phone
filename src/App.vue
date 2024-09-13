@@ -2,7 +2,7 @@
 import Button from '@/components/Button.vue';
 import { useScreenStore } from './stores/screen';
 import { useRouter, useRoute } from 'vue-router';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const inputBtn = "123456789*0#";
 
@@ -23,8 +23,17 @@ setInterval(() => {
 }, 1000);
 
 router.afterEach((to, from,fail)=>{
-    second.value=LOCK_SEC;
+  second.value=LOCK_SEC;
 })
+
+function onPointerUpRb(){
+  if (['/', '/lock', '/unlock'].includes(route.path))
+    return;
+  if(route.path=='/home')
+    router.push('/')
+  else
+    router.push('/home')
+}
 
 function goLeft(){
   if (store.ltFnUrl)
@@ -96,7 +105,7 @@ function down(){
           </template>
         </Button>
         <Button text="DN" @pointer-up="up" #content>▼</Button>
-        <Button text="RB">
+        <Button text="RB" @pointer-up="onPointerUpRb">
           <template #content>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" class="size-5 mx-auto my-2 rotate-[135deg]">
               <path fill-rule="evenodd"
