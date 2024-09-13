@@ -23,7 +23,6 @@ setInterval(() => {
 }, 1000);
 
 router.afterEach((to, from,fail)=>{
-  if (to.path!='/')
     second.value=LOCK_SEC;
 })
 
