@@ -1,11 +1,31 @@
 <script setup lang="ts">
 import Button from '@/components/Button.vue';
 import { useScreenStore } from './stores/screen';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
+import { ref } from 'vue';
 
 const inputBtn = "123456789*0#";
+
 const store=useScreenStore();
+const route=useRoute();
 const router=useRouter();
+
+const LOCK_SEC=60;
+const second=ref(LOCK_SEC);
+setInterval(() => {
+  if(route.path=='/')
+    return;
+
+  if (second.value==0)
+    router.push('/');
+  else
+    second.value-=1;
+}, 1000);
+
+router.afterEach((to, from,fail)=>{
+  if (to.path!='/')
+    second.value=LOCK_SEC;
+})
 
 function goLeft(){
   if (store.ltFnUrl)
@@ -90,13 +110,13 @@ function down(){
 
       <ul class="flex flex-wrap">
         <li v-for="str of inputBtn" :key="str">
-          <Button :text="str" @pointer-down="console.log(`key-down: ${str}`)"
-            @pointer-up="console.log(`key-up: ${str}`)"></Button>
+          <Button :text="str"
+            @pointer-up="store.$patch({input: store.input+str})"></Button>
         </li>
       </ul>
 
       <div v-if="$route.path=='/'" class="absolute left-0 top-0 w-full h-full bg-transparent"
-           @pointerup="$router.push('/home')"></div>
+           @pointerup="$router.push('/lock')"></div>
     </div>
   </div>
 </template>
