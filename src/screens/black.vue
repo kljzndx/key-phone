@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import Container from './container.vue';
+
 
 </script>
 
 <template>
-    <div class="w-full h-full bg-black">
+    <Container>
+        <div class="w-full h-full bg-black">
 
-    </div>
+        </div>
+    </Container>
 </template>

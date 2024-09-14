@@ -32,7 +32,7 @@ watch(()=>store.input,(vl)=>{
 </script>
 
 <template>
-    <Container lt-fn-text="解锁" lt-fn-url="" rt-fn-text="" rt-fn-url="">
+    <Container lt-fn-text="解锁">
         <div class="bg-layer">
             <p class=" w-32 h-16 bg-white flex justify-center items-center">
                 请按下 * 键

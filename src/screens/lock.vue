@@ -13,7 +13,7 @@ onBeforeUnmount(()=>clearTimeout(timer))
 </script>
 
 <template>
-    <Container lt-fn-text="解锁" lt-fn-url="/unlock" rt-fn-text="" rt-fn-url="">
+    <Container lt-fn-text="解锁" lt-fn-url="/unlock">
         <img src="@/assets/home.png" alt="Home 背景">
     </Container>
 </template>
