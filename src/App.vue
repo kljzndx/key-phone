@@ -10,10 +10,14 @@ const store=useScreenStore();
 const route=useRoute();
 const router=useRouter();
 
+const hasFn=computed(()=>{
+  return store.ltFnText+store.ltFnUrl+store.rtFnText+store.rtFnUrl != '';
+})
+
 const LOCK_SEC=60;
 const second=ref(LOCK_SEC);
 setInterval(() => {
-  if(route.path=='/')
+  if(!hasFn.value)
     return;
 
   if (second.value==0)
@@ -27,8 +31,9 @@ router.afterEach((to, from,fail)=>{
 })
 
 function onPointerUpRb(){
-  if (['/', '/lock', '/unlock'].includes(route.path))
+  if (!hasFn.value || ['/lock', '/unlock'].includes(route.path))
     return;
+  
   if(route.path=='/home')
     router.push('/')
   else
@@ -77,7 +82,7 @@ function down(){
     <div class="h-40 relative bg-sky-800">
       <RouterView></RouterView>
       
-      <div v-if="$route.path!='/'" class="flex flex-col justify-between absolute top-0 left-0 w-full h-full">
+      <div v-if="hasFn" class="flex flex-col justify-between absolute top-0 left-0 w-full h-full">
         <div class="scr-info">
           <span>15:30</span>
           <span>4G 70% 电</span>
