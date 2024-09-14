@@ -3,6 +3,8 @@ import Home from '@/screens/home.vue'
 import Black from '@/screens/black.vue'
 import Lock from '@/screens/lock.vue'
 import Unlock from '@/screens/unlock.vue'
+import Powerdown from '@/screens/powerdown.vue'
+import Powerup from '@/screens/powerup.vue'
 
 export const useScreenRouter = createRouter({
     history: createWebHistory(),
@@ -10,6 +12,14 @@ export const useScreenRouter = createRouter({
         {
             path: '/',
             component: Black
+        },
+        {
+            path: '/powerdown',
+            component: Powerdown
+        },
+        {
+            path: '/powerup',
+            component: Powerup
         },
         {
             path: '/lock',

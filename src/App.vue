@@ -37,9 +37,22 @@ router.afterEach((to, from,fail)=>{
   second.value=LOCK_SEC;
 })
 
+let powerTimer=-1;
+function onPointerDownRb(){
+  powerTimer=setTimeout(()=>{
+    if (route.path=='/powerdown')
+      router.push('/powerup');
+    else
+      router.push('/powerdown');
+  }, 5000)
+}
+
 function onPointerUpRb(){
   if (!hasFn.value)
     return;
+
+  clearTimeout(powerTimer);
+
   if(['/home', '/lock', '/unlock'].includes(route.path))
     router.push('/')
   else
@@ -116,7 +129,7 @@ function down(){
           </template>
         </Button>
         <Button text="DN" @pointer-up="up" #content>▼</Button>
-        <Button text="RB" @pointer-up="onPointerUpRb">
+        <Button text="RB" @pointer-down="onPointerDownRb" @pointer-up="onPointerUpRb">
           <template #content>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" class="size-5 mx-auto my-2 rotate-[135deg]">
               <path fill-rule="evenodd"
