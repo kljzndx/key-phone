@@ -10,6 +10,10 @@ const store=useScreenStore();
 const route=useRoute();
 const router=useRouter();
 
+router.afterEach((to, from,fail)=>{
+  second.value=LOCK_SEC;
+})
+
 const hasFn=computed(()=>{
   return store.ltFnText+store.ltFnUrl+store.rtFnText+store.rtFnUrl != '';
 })
@@ -31,10 +35,6 @@ onMounted(()=>{
 
 onBeforeUnmount(()=>{
   clearInterval(lockTimer);
-})
-
-router.afterEach((to, from,fail)=>{
-  second.value=LOCK_SEC;
 })
 
 let powerTimer=-1;
