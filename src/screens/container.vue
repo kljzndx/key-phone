@@ -3,13 +3,18 @@ import { useScreenStore } from '@/stores/screen';
 import { onMounted } from "vue";
 
 const props = withDefaults(defineProps<{
-    ltFnText: string,
-    ltFnUrl: string,
-    rtFnText: string,
-    rtFnUrl: string,
+    ltFnText?: string,
+    ltFnUrl?: string,
+    rtFnText?: string,
+    rtFnUrl?: string,
 
     infomation?: string,
 }>(), {
+    ltFnText:'',
+    ltFnUrl:'',
+    rtFnText:'',
+    rtFnUrl:'',
+
     infomation: '',
 });
 
@@ -28,7 +33,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="w-48 h-32 bg-transparent">
+    <div class="w-full h-full bg-transparent">
         <slot name="default" :input="store.input"></slot>
     </div>
 </template>
