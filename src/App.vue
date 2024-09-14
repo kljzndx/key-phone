@@ -31,10 +31,9 @@ router.afterEach((to, from,fail)=>{
 })
 
 function onPointerUpRb(){
-  if (!hasFn.value || ['/lock', '/unlock'].includes(route.path))
+  if (!hasFn.value)
     return;
-  
-  if(route.path=='/home')
+  if(['/home', '/lock', '/unlock'].includes(route.path))
     router.push('/')
   else
     router.push('/home')
