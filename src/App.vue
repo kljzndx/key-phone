@@ -74,7 +74,7 @@ function down(){
 
 <template>
   <div class="w-48">
-    <div class="h-32 relative bg-sky-800">
+    <div class="h-40 relative bg-sky-800">
       <RouterView></RouterView>
       
       <div v-if="$route.path!='/'" class="flex flex-col justify-between absolute top-0 left-0 w-full h-full">
