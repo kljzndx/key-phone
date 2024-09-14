@@ -2,7 +2,7 @@
 import Button from '@/components/Button.vue';
 import { useScreenStore } from './stores/screen';
 import { useRouter, useRoute } from 'vue-router';
-import { computed, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
 const inputBtn = "123456789*0#";
 
@@ -14,17 +14,24 @@ const hasFn=computed(()=>{
   return store.ltFnText+store.ltFnUrl+store.rtFnText+store.rtFnUrl != '';
 })
 
+let lockTimer=-1;
 const LOCK_SEC=60;
 const second=ref(LOCK_SEC);
-setInterval(() => {
-  if(!hasFn.value)
-    return;
+onMounted(()=>{
+  lockTimer = setInterval(() => {
+    if(!hasFn.value)
+      return;
 
-  if (second.value==0)
-    router.push('/');
-  else
-    second.value-=1;
-}, 1000);
+    if (second.value==0)
+      router.push('/');
+    else
+      second.value-=1;
+  }, 1000);
+})
+
+onBeforeUnmount(()=>{
+  clearInterval(lockTimer);
+})
 
 router.afterEach((to, from,fail)=>{
   second.value=LOCK_SEC;
