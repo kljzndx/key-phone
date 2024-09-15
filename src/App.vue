@@ -70,28 +70,13 @@ function goRight(){
 }
 
 function up(){
-  if (store.input.length==1&&Number.isSafeInteger(store.input)){
-    const vl=Number(store.input)
-    const nl=(vl+1).toString()
-
-    store.$patch({
-      input: nl,
-    })
-  }
+  if (store.optionId<255)
+    store.optionId+=1;
 }
 
 function down(){
-  if (Number.isSafeInteger(store.input)){
-    const vl=Number(store.input)
-    if (vl==0)
-      return;
-
-    const nl=(vl-1).toString()
-    
-    store.$patch({
-      input: nl,
-    })
-  }
+  if (store.optionId>0)
+    store.optionId-=1;
 }
 
 </script>

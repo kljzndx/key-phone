@@ -6,8 +6,11 @@ export const useScreenStore = defineStore('screen', () => {
   const rtFnText = ref('');
   const ltFnUrl = ref('');
   const rtFnUrl = ref('');
+
   const input = ref('');
+  const optionId = ref(0);
+  
   const information = ref('');
 
-  return { ltFnText, ltFnUrl, rtFnText, rtFnUrl, input, information }
+  return { ltFnText, ltFnUrl, rtFnText, rtFnUrl, input, optionId, information }
 })
