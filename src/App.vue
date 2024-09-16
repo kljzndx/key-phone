@@ -59,14 +59,29 @@ function onPointerUpRb(){
     router.push('/home')
 }
 
+function execCommand(com:string) {
+  if (!com.startsWith('#'))
+    return false;
+
+  if (com=='#back')
+    router.back();
+
+  return true;
+}
+
 function goLeft(){
   if (store.ltFnUrl)
     router.push(store.ltFnUrl)
 }
 
 function goRight(){
-  if (store.rtFnUrl)
-    router.push(store.rtFnUrl)
+  if (!store.rtFnUrl)
+    return;
+
+  if (execCommand(store.rtFnUrl))
+    return;
+    
+  router.push(store.rtFnUrl)
 }
 
 function up(){
