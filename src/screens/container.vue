@@ -34,6 +34,6 @@ onMounted(() => {
 
 <template>
     <div class="w-full h-full bg-transparent">
-        <slot name="default" :input="store.input"></slot>
+        <slot name="default"></slot>
     </div>
 </template>
