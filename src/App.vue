@@ -72,11 +72,15 @@ function goRight(){
 function up(){
   if (store.optionId<255)
     store.optionId+=1;
+
+  second.value=LOCK_SEC;
 }
 
 function down(){
   if (store.optionId>0)
     store.optionId-=1;
+
+  second.value=LOCK_SEC;
 }
 
 </script>
