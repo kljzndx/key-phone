@@ -6,6 +6,7 @@ import Unlock from '@/screens/unlock.vue'
 import Powerdown from '@/screens/powerdown.vue'
 import Powerup from '@/screens/powerup.vue'
 import PhoneBook from '@/screens/phoneBook.vue'
+import PageNotFound from '@/screens/PageNotFound.vue'
 
 export const useScreenRouter = createRouter({
     history: createWebHistory(),
@@ -37,6 +38,10 @@ export const useScreenRouter = createRouter({
         {
             path: '/p-book',
             component: PhoneBook
+        },
+        {
+            path: '/:notFound(.*)*',
+            component: PageNotFound
         },
     ]
 })
