@@ -5,6 +5,7 @@ import Lock from '@/screens/lock.vue'
 import Unlock from '@/screens/unlock.vue'
 import Powerdown from '@/screens/powerdown.vue'
 import Powerup from '@/screens/powerup.vue'
+import PhoneBook from '@/screens/phoneBook.vue'
 
 export const useScreenRouter = createRouter({
     history: createWebHistory(),
@@ -32,6 +33,10 @@ export const useScreenRouter = createRouter({
         {
             path: '/home',
             component: Home
+        },
+        {
+            path: '/p-book',
+            component: PhoneBook
         },
     ]
 })
