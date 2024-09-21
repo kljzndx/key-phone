@@ -37,6 +37,13 @@ onBeforeUnmount(()=>{
   clearInterval(lockTimer);
 })
 
+function onPointerUpLb(){
+  if (['/p-book'].includes(route.path))
+    router.push('/calling')
+  else 
+    router.push('/p-book')
+}
+
 let powerTimer=-1;
 function onPointerDownRb(){
   powerTimer=setTimeout(()=>{
@@ -123,7 +130,7 @@ function down(){
         <Button text="UP" @pointer-up="down" #content>▲</Button>
         <Button text="RT" @pointer-up="goRight" #content>—</Button>
 
-        <Button text="LB">
+        <Button text="LB" @pointer-up="onPointerUpLb">
           <template #content>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="green" class="size-5 mx-auto my-1">
               <path fill-rule="evenodd"
