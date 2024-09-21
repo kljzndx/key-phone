@@ -55,10 +55,10 @@ function onPointerDownRb(){
 }
 
 function onPointerUpRb(){
+  clearTimeout(powerTimer);
+
   if (!hasFn.value)
     return;
-
-  clearTimeout(powerTimer);
 
   if(['/home', '/lock', '/unlock'].includes(route.path))
     router.push('/')
