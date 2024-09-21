@@ -38,7 +38,7 @@ onMounted(()=>{
 </script>
 
 <template>
-    <Container rt-fn-text="返回" rt-fn-url="#back" #main>
+    <Container lt-fn-text="菜单" lt-fn-url="/pb-menu" rt-fn-text="返回" rt-fn-url="#back" #main>
         <ul>
             <li class="py-1 px-2 my-1 flex flex-nowrap gap-x-3
                 overflow-hidden text-nowrap whitespace-nowrap text-clip"
