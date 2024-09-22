@@ -8,6 +8,7 @@ import Powerup from '@/screens/powerup.vue'
 import PhoneBook from '@/screens/phoneBook.vue'
 import PageNotFound from '@/screens/PageNotFound.vue'
 import Calling from '@/screens/calling.vue'
+import PhoneInput from '@/screens/phoneInput.vue'
 
 export const useScreenRouter = createRouter({
     history: createWebHistory(),
@@ -39,6 +40,10 @@ export const useScreenRouter = createRouter({
         {
             path: '/p-book',
             component: PhoneBook
+        },
+        {
+            path: '/input',
+            component: PhoneInput
         },
         {
             path: '/calling',

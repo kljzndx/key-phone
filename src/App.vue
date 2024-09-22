@@ -38,7 +38,7 @@ onBeforeUnmount(()=>{
 })
 
 function onPointerUpLb(){
-  if (['/p-book'].includes(route.path))
+  if (['/p-book', '/input'].includes(route.path))
     router.push('/calling')
   else 
     router.push('/p-book')
@@ -73,6 +73,9 @@ function execCommand(com:string) {
   if (com=='#back')
     router.back();
 
+  if (com=='#del')
+    store.input=store.input.substring(0, store.input.length-1);
+
   return true;
 }
 
@@ -102,6 +105,17 @@ function down(){
   if (store.optionId>0)
     store.optionId-=1;
 
+  second.value=LOCK_SEC;
+}
+
+function onInputBtnUp(str:string){
+  if (route.path=='/home'){
+    store.input='';
+    router.push('/input');
+    return;
+  }
+
+  store.input=store.input+str;
   second.value=LOCK_SEC;
 }
 
@@ -154,7 +168,7 @@ function down(){
       <ul class="flex flex-wrap">
         <li v-for="str of inputBtn" :key="str">
           <Button :text="str"
-            @pointer-up="store.$patch({input: store.input+str})"></Button>
+            @pointer-up="onInputBtnUp"></Button>
         </li>
       </ul>
 
