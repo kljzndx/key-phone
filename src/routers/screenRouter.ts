@@ -9,6 +9,7 @@ import PhoneBook from '@/screens/phoneBook.vue'
 import PageNotFound from '@/screens/PageNotFound.vue'
 import Calling from '@/screens/calling.vue'
 import PhoneInput from '@/screens/phoneInput.vue'
+import MainMenu from '@/screens/mainMenu.vue'
 
 export const useScreenRouter = createRouter({
     history: createWebHistory(),
@@ -36,6 +37,10 @@ export const useScreenRouter = createRouter({
         {
             path: '/home',
             component: Home
+        },
+        {
+            path: '/menu',
+            component: MainMenu
         },
         {
             path: '/p-book',
