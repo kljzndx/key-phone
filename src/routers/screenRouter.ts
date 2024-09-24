@@ -12,7 +12,7 @@ import PhoneInput from '@/screens/phoneInput.vue'
 import MainMenu from '@/screens/mainMenu.vue'
 
 export const useScreenRouter = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/key-phone/'),
     routes: [
         {
             path: '/',
